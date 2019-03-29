@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Try #2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Word Guess Game</h1>
+    <h3 id="theme">Press any key to start!</h3>
+    <p id="wins"></p>
+    <p id="losses"></p>
+    <br><br>
+    <!-- Populate the next paragraph to say "Guess this word"-->
+    <p id="blank"></p>
+    <p id="letter"></p>
+    <br><br>
+    <p id="guessesLeft"></p>
+    <p id="lettersGuessed"></p>
+
+    <script>
+        var wordBank = ["red", "blue"];
+        var wins = 0;
+        var losses = 0;
+        var wrongLetter = [];
+        var guessesLeft = 10;
+        var underScores = [];
+        var guessedLetters = [];
+        var randWord;
+        var winCounter = 0;
+
+        function startGame (){
+            randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+
+            for (i=0; i<randWord.length; i++){
+                underScores.push("_");
+            }
+            document.getElementById("blank").textContent = "Guess this word: " + underScores.join(" ");
+            document.getElementById("wins").textContent = "You have "+ wins +" wins";
+            document.getElementById("losses").textContent = "You have " +losses+ " losses";
+            document.getElementById("lettersGuessed").textContent = "Wrong letters: " + guessedLetters;
+            document.getElementById("guessesLeft").textContent = "You have " +guessesLeft+ " wrong guesses left";
+
+        guessedLetters = [];
+        winCounter = 0;
+        wrongLetter = [];
+        guessesLeft = 10;
+        }
+        startGame();
+
+        function winLose(){
+            if (winCounter === randWord.length){
+                wins++;
+                document.getElementById("wins").textContent = "You have "+ wins +" wins";
+                alert("You win!");
+                underScores = [];
+                startGame();
+            } else if (guessesLeft === 0){
+                losses++;
+                document.getElementById("losses").textContent = "You have " +losses+ " losses";
+                alert("You're a big stinking looooooser!");
+                underScores = [];
+                startGame();
+            }
+            }
+        
+
+        document.onkeyup = function(event) {
+            document.getElementById("theme").textContent = "The theme is COLORS.";
+
+            userGuesses = event.key;
+
+            if (randWord.indexOf(userGuesses) > -1){
+                for (i=0; i<randWord.length; i++){
+                    if (randWord[i] === userGuesses){
+                        underScores[i] = userGuesses;
+                        winCounter++;
+                        document.getElementById("blank").textContent = "Guess this word: " + underScores.join(" ");
+                        winLose();
+                        
+                    }
+                }
+
+            } else {
+                guessedLetters.push(userGuesses);
+                guessesLeft--;
+                document.getElementById("lettersGuessed").textContent = "Wrong letters: " + guessedLetters.join(", ");
+                document.getElementById("guessesLeft").textContent = "You have " +guessesLeft+ " wrong guesses left";
+                winLose();
+                console.log(guessedLetters);
+
+            }
+        }
+
+    </script>
+</body>
+</html>
