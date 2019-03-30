@@ -24,8 +24,7 @@
     <script>
         var wordBank = ["red", "blue"];
         var wrongLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
-            "s", "t", "u", "v", "w", "x", "y", "z"
-        ]
+            "s", "t", "u", "v", "w", "x", "y", "z"]
         var wins = 0;
         var losses = 0;
         var wrongLetter = [];
@@ -41,10 +40,7 @@
             for (i = 0; i < randWord.length; i++) {
                 underScores.push("_");
             };
-            for (i = 0; i < wrongLetters.length; i++) {
-                guessedLetters.push("_");
-            }
-
+            guessedLetters = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", ];
             wrongLetter = [];
             winCounter = 0;
             guessesLeft = 10;
@@ -62,27 +58,27 @@
             if (winCounter === randWord.length) {
                 wins++;
                 document.getElementById("wins").textContent = "You have " + wins + " wins";
-                alert("You win!");
                 underScores = [];
                 startGame();
             } else if (guessesLeft === 0) {
                 losses++;
                 document.getElementById("losses").textContent = "You have " + losses + " losses";
-                alert("You're a big stinking looooooser!");
                 underScores = [];
+                guessedLetters = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", ];
+                document.getElementById("lettersGuessed").textContent = "Wrong letters: " + guessedLetters.join(" ");
                 startGame();
             }
         }
 
 
-        document.onkeyup = function (event) {
+        document.onkeydown = function (event) {
             document.getElementById("theme").textContent = "The theme is COLORS.";
 
             userGuesses = event.key;
 
             if (randWord.indexOf(userGuesses) > -1) {
                 for (i = 0; i < randWord.length; i++) {
-                    if (randWord[i] === userGuesses) {
+                    if (randWord[i] === userGuesses && underScores[i] === "_") {
                         underScores[i] = userGuesses;
                         winCounter++;
                         document.getElementById("blank").textContent = "Guess this word: " + underScores.join(" ");
