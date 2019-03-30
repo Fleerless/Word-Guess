@@ -50,6 +50,7 @@
             winCounter = 0;
             guessesLeft = 10;
 
+            document.getElementById("hintMe").textContent = "";
             document.getElementById("blank").textContent = "Guess this word: " + underScores.join(" ");
             document.getElementById("wins").textContent = "You have " + wins + " wins";
             document.getElementById("losses").textContent = "You have " + losses + " losses";
@@ -77,8 +78,7 @@
 
         document.getElementById("clickMe").onclick = function () {displayHint()};
         function displayHint() {
-            document.getElementById("hintMe").innerText = hint;
-            console.log(hint);
+            document.getElementById("hintMe").textContent = hint;
 
 
         }
