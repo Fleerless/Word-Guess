@@ -20,9 +20,11 @@
     <br><br>
     <p id="guessesLeft"></p>
     <p id="lettersGuessed"></p>
+    <button id="clickMe">Hint!</button>
+    <p id="hintMe"></p>
 
     <script>
-        var wordBank = ["red", "blue"];
+        var wordBank = [["red", "blood"], ["blue", "water"]];
         var wrongLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
             "s", "t", "u", "v", "w", "x", "y", "z"]
         var wins = 0;
@@ -33,9 +35,12 @@
         var guessedLetters = [];
         var randWord;
         var winCounter = 0;
+        var hint = "";
 
         function startGame() {
-            randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+            randNum = Math.floor(Math.random() * wordBank.length);
+            randWord = wordBank[randNum][0];
+            hint = wordBank[randNum][1];
 
             for (i = 0; i < randWord.length; i++) {
                 underScores.push("_");
@@ -70,6 +75,13 @@
             }
         }
 
+        document.getElementById("clickMe").onclick = function () {displayHint()};
+        function displayHint() {
+            document.getElementById("hintMe").innerText = hint;
+            console.log(hint);
+
+
+        }
 
         document.onkeydown = function (event) {
             document.getElementById("theme").textContent = "The theme is COLORS.";
