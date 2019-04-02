@@ -24,7 +24,7 @@
     <p id="hintMe"></p>
 
     <script>
-        var wordBank = [["red", "blood"], ["blue", "water"]];
+        var wordBank = [["red a", "blood"], ["blue a", "water"], ["green a", "grass"], ["yellow a", "lemons"], ["brown", "dirt"]];
         var wrongLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
             "s", "t", "u", "v", "w", "x", "y", "z"]
         var wins = 0;
@@ -41,13 +41,18 @@
             randNum = Math.floor(Math.random() * wordBank.length);
             randWord = wordBank[randNum][0];
             hint = wordBank[randNum][1];
+            winCounter= 0;
 
             for (i = 0; i < randWord.length; i++) {
+                if (randWord[i] === " "){
+                    underScores.push(String.fromCharCode(160));
+                    winCounter++;
+                } else
                 underScores.push("_");
-            };
+            }; console.log(underScores);
+
             guessedLetters = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", ];
             wrongLetter = [];
-            winCounter = 0;
             guessesLeft = 10;
 
             document.getElementById("hintMe").textContent = "";
@@ -78,7 +83,7 @@
 
         document.getElementById("clickMe").onclick = function () {displayHint()};
         function displayHint() {
-            document.getElementById("hintMe").textContent = hint;
+            document.getElementById("hintMe").textContent = "The color of: " +hint;
 
 
         }
@@ -111,8 +116,9 @@
                     }
                 }
 
-            }
-        }
+            }        console.log(winCounter);
+
+        } 
     </script>
 </body>
 
