@@ -1,0 +1,35 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+h3 {
+    display: flex;
+    justify-content: center;
+}
+.score {
+    width: 75%;
+    margin-left: 12.5%;
+    display: flex;
+    justify-content: space-between;
+}
+#blank {
+    display: flex;
+    justify-content: center;
+}
+.wrongs {
+    width: 75%;
+    margin-left: 12.5%;
+    display: flex;
+    justify-content: space-between;
+}
+.hintButton {
+    width: 60%;
+    margin-left: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+height: 30px;
+width: 50px;
+}

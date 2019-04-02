@@ -6,23 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Try #2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1>Word Guess Game</h1>
     <h3 id="theme">Press any key to start!</h3>
-    <p id="wins"></p>
-    <p id="losses"></p>
+    <div class="score">
+        <p id="wins"></p>
+        <p id="losses"></p>
+    </div>
     <br><br>
-    <!-- Populate the next paragraph to say "Guess this word"-->
     <p id="blank"></p>
-    <p id="letter"></p>
     <br><br>
-    <p id="guessesLeft"></p>
-    <p id="lettersGuessed"></p>
-    <button id="clickMe">Hint!</button>
-    <p id="hintMe"></p>
-
+    <div class="wrongs">
+        <p id="guessesLeft"></p>
+        <p id="lettersGuessed"></p>
+    </div>
+    <div class= "hintButton">
+        <button id="clickMe">Hint!</button>
+        <p id="hintMe"></p>
+    </div>
     <script>
         var wordBank = [["red a", "blood"], ["blue a", "water"], ["green a", "grass"], ["yellow a", "lemons"], ["brown", "dirt"]];
         var wrongLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
@@ -49,45 +53,39 @@
                     winCounter++;
                 } else
                 underScores.push("_");
-            }; console.log(underScores);
-
+            }; 
             guessedLetters = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", ];
             wrongLetter = [];
             guessesLeft = 10;
 
             document.getElementById("hintMe").textContent = "";
             document.getElementById("blank").textContent = "Guess this word: " + underScores.join(" ");
-            document.getElementById("wins").textContent = "You have " + wins + " wins";
-            document.getElementById("losses").textContent = "You have " + losses + " losses";
+            document.getElementById("wins").textContent = "Wins: " + wins;
+            document.getElementById("losses").textContent = "Losses: " + losses;
             document.getElementById("lettersGuessed").textContent = "Wrong letters: " + guessedLetters.join(" ");
             document.getElementById("guessesLeft").textContent = "You have " + guessesLeft + " wrong guesses left";
-
         }
         startGame();
 
         function winLose() {
             if (winCounter === randWord.length) {
                 wins++;
-                document.getElementById("wins").textContent = "You have " + wins + " wins";
+                document.getElementById("wins").textContent = "Wins: " + wins;
                 underScores = [];
                 startGame();
             } else if (guessesLeft === 0) {
                 losses++;
-                document.getElementById("losses").textContent = "You have " + losses + " losses";
+                document.getElementById("losses").textContent = "Losses: " + losses;
                 underScores = [];
                 guessedLetters = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", ];
                 document.getElementById("lettersGuessed").textContent = "Wrong letters: " + guessedLetters.join(" ");
                 startGame();
             }
         }
-
         document.getElementById("clickMe").onclick = function () {displayHint()};
         function displayHint() {
             document.getElementById("hintMe").textContent = "The color of: " +hint;
-
-
         }
-
         document.onkeydown = function (event) {
             document.getElementById("theme").textContent = "The theme is COLORS.";
 
@@ -100,13 +98,11 @@
                         winCounter++;
                         document.getElementById("blank").textContent = "Guess this word: " + underScores.join(" ");
                         winLose();
-
                     }
                 }
-
             } else {
                 for (i = 0; i < wrongLetters.length; i++) {
-                    if (wrongLetters[i] === userGuesses) {
+                    if (wrongLetters[i] === userGuesses && wrongLetters[i] !== guessedLetters[i]) {
                         guessedLetters[i] = userGuesses;
                         guessesLeft--;
                         document.getElementById("lettersGuessed").textContent = "Wrong letters: " + guessedLetters.join(" ");
@@ -115,11 +111,8 @@
                         winLose();
                     }
                 }
-
-            }        console.log(winCounter);
-
+            }      
         } 
     </script>
 </body>
-
 </html>
