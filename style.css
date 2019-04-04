@@ -1,10 +1,11 @@
-h1 {
+.title {
     display: flex;
     justify-content: center;
 }
 h3 {
     display: flex;
     justify-content: center;
+    font-family: 'sf_fortune_wheel_condensedRg';
 }
 .score {
     width: 75%;
@@ -15,6 +16,7 @@ h3 {
 #blank {
     display: flex;
     justify-content: center;
+    font-size: 32px;
 }
 .wrongs {
     width: 75%;
@@ -32,4 +34,17 @@ h3 {
 button {
 height: 30px;
 width: 50px;
+}
+#clue {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+@font-face {
+    font-family: 'sf_fortune_wheel_condensedRg';
+    src: url('sf_fortune_wheel_condensed.woff2') format('woff2'),
+         url('assets/fonts//sf_fortune_wheel_condensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
