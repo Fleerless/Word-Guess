@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Try #2</title>
+    <title>Wheel of Fortune Game!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
@@ -64,7 +65,7 @@
             document.getElementById("clue").textContent = ""; 
             document.getElementById("theme").textContent = "Press Space Bar to start!";
             document.getElementById("hintMe").textContent = "";
-            document.getElementById("blank").textContent = "Guess this phrase:  " + underScores.join(" ");
+            document.getElementById("blank").textContent = "GUESS THIS PHRASE:  " + underScores.join(" ");
             document.getElementById("wins").textContent = "Wins: " + wins;
             document.getElementById("losses").textContent = "Losses: " + losses;
             document.getElementById("lettersGuessed").textContent = "Wrong letters: " + guessedLetters.join(" ");
@@ -77,7 +78,7 @@
                 wins++;
                 document.getElementById("wins").textContent = "Wins: " + wins;
                 underScores = [];
-                startGame();
+                setTimeout(startGame, 1000*5);
             } else if (guessesLeft === 0) {
                 losses++;
                 document.getElementById("losses").textContent = "Losses: " + losses;
@@ -102,7 +103,7 @@
                     if (randWord[i] === userGuesses && underScores[i] === "_") {
                         underScores[i] = userGuesses;
                         winCounter++;
-                        document.getElementById("blank").textContent = "Guess this phrase: " + underScores.join(" ");
+                        document.getElementById("blank").textContent = "GUESS THIS PHRASE: " + underScores.join(" ");
                         winLose();
                     }
                 }

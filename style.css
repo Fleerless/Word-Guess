@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .title {
     display: flex;
     justify-content: center;
@@ -6,6 +10,7 @@ h3 {
     display: flex;
     justify-content: center;
     font-family: 'sf_fortune_wheel_condensedRg';
+    transform: scaleX(1.5);
 }
 .score {
     width: 75%;
