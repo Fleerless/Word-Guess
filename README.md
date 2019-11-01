@@ -6,12 +6,13 @@ This is a fun little app that is based on the TV game Who Wants to be a Milliona
 
 ### Prerequisites
 
-The only thing you need to play this game is a computer with an internet connection, and the [url](https://fleerless.github.io/Word-Guess/). Will not work on mobile devices.
+The only thing you need to play this game is a computer with an internet connection, and the url linked [here](https://fleerless.github.io/Word-Guess/). Will not work on mobile devices.
 
 ### Installing 
 
 To run this app in a development enviornment you will need to clone the [repository](https://github.com/Fleerless/Word-Guess), and open the files in your browser.
 
 ## Built With
-
-`
+ 
+ * javascript
+ * [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator)
