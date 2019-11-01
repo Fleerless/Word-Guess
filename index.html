@@ -30,6 +30,9 @@
         <button id="clickMe">Hint!</button>
         <p id="hintMe"></p>
     </div>
+
+
+
     <script>
         var wordBank = [["drugs are bad mkay", "What is bad?", "From South Park:  What is Mr. Mackey's favorite phrase?"], ["car ramrod", "Two names put together", " From SuperTroopers:  Whad did Farva want to call his car when riding with Thorny"], ["i got her number", "How do you like them apples", ["From Good Will Hunting:  What did Will say to the guy through the bar window"]]];
         var wrongLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
@@ -88,6 +91,7 @@
                 startGame();
             }
         }
+        
         document.getElementById("clickMe").onclick = function () {displayHint()};
         function displayHint() {
             document.getElementById("hintMe").textContent = hint;
